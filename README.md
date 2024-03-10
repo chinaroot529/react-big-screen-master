@@ -1,30 +1,10 @@
-**通知：最新的低代码大屏系统GoView已开源，详见：[https://gitee.com/MTrun/go-view](https://gitee.com/MTrun/go-view)**
-
-![输入图片说明](https://gitee.com/MTrun/go-view/raw/master/readme/logo-t-y.png)
-
 ## 一、项目描述
 
 - 一个基于 React、Dva、DataV、ECharts 框架的 " **数据大屏项目** "。支持数据动态刷新渲染、屏幕适配、数据请求模拟、局部样式、图表自由替换/复用等功能。
-
-- [**Vue3 版本请点击这里查看，使用 Hooks+TypeScript 实现，全新内容等你探索!**](https://gitee.com/MTrun/vue-big-screen-plugin)
-- [**Vue2 版本请点击这里查看，也很不错的(o ﾟ v ﾟ)ノ**](https://gitee.com/MTrun/big-screen-vue-datav)
 - 项目需要全屏展示（按 F11）。
 - 项目环境：react^16.2、webpack-4.0、npm-6.13、node-v12.16。
 - 请拉取 master 分支的代码，其余是开发分支。
 - 项目各依赖包版本较低，如有影响请自行升级。
-- 需要其它地图数据的，请查看我的其它项目（有一个地图合集）
-
-友情链接：
-
-1.  [React 官方文档](https://react.docschina.org/docs/introducing-jsx.html)
-2.  [Dva 官方文档](https://dvajs.com/guide/)
-3.  [DataV 官方文档](http://datav-react.jiaminghi.com/guide/)
-4.  [echarts 实例](https://echarts.apache.org/examples/zh/index.html)，[echarts API文档](https://echarts.apache.org/zh/api.html#echarts)
-5.  [styled-components 官方文档](https://styled-components.com/)，[思否相关教学文章](https://segmentfault.com/a/1190000014682665)
-6.  [项目 gitee 地址（国内速度快）](https://gitee.com/MTrun/react-big-screen)
-
-项目界面图：
-![界面展示](https://images.gitee.com/uploads/images/2020/0927/205317_db15e619_4964818.gif '界面展示.gif')
 
 ## 二、文件目录介绍
 
@@ -164,17 +144,3 @@ var _createHashHistory = _interopRequireDefault(
 ### 使用 Hook
 
 如果需要使用 Hook 而非 Class 编写代码，请先卸载当前react，然后安装支持 Hook 的 React（>=16.8），当前项目是 Dva 脚手架生成的，暂不支持 Hook。
-
-## 四、更新情况
-
-后面可能会请朋友将项目修改为 Hook版本，切一个分支出来，也许会鸽🕊（不要打我）。
-
-## 五、反馈
-
-QQ群二维码：
-
-![输入图片说明](public/image.png)
-
-## 六、其余
-
-这个项目是个人的作品，难免会有问题和 BUG，如果有问题请进行评论，我也会尽力去更新，自己也在前端学习的路上，欢迎交流，非常感谢！
