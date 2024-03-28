@@ -7,6 +7,30 @@ export const CenterPage = styled.div`
   align-items: center;
 `;
 
+export const StyledBorderBox12 = styled.div`
+  width: 11.725rem;
+  height: 8.025rem;
+  border-radius: 10px; // 圆角边框
+  overflow: hidden; // 防止内容溢出
+  color: #c0c9d2; // 文本颜色
+  margin-top: 0.275rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .center-bottom {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgba(19, 25, 47, 0.6);
+    overflow-y: auto; // 添加滚动条
+    box-sizing: border-box;
+    padding: 20px;
+    margin-left:-10px;
+    margin-right:-10px;
+  }
+`;
+
+
 export const CenterBottom = styled.div`
   display: flex;
   margin-bottom: 0.25rem;

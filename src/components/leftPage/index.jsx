@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { LeftPage, LeftTopBox, LeftBottomBox } from './style';
+import { LeftPage, LeftTopBox, LeftBottomBox, LeftBottom } from './style';
 import { ModuleTitle } from '../../style/globalStyledSet';
 import { BorderBox12, BorderBox13 } from '@jiaminghi/data-view-react';
 import TrafficSituation from './charts/TrafficSituation';
@@ -11,13 +11,13 @@ class index extends PureComponent {
     super(props);
     this.state = {
       showLeftTopComponent: true, // 默认显示上部组件
-      selectedItem: null, // 初始时没有选中的项目
+      selectedItemContent: props.showLeftTopComponent[1], // 初始时没有选中的项目
     };
   }
 
   render() {
     const { recommendSitua, trafficSitua, accessFrequency, peakFlow } = this.props;
-    const { showLeftTopComponent } = this.props; // 从状态中获取控制变量
+    const { showLeftTopComponent, showDetails, selectedItem } = this.props; // 从状态中获取控制变量
     return (
       <LeftPage>
         {showLeftTopComponent && (
@@ -46,18 +46,34 @@ class index extends PureComponent {
           </LeftTopBox>
         )}
         {/* 底部图表 */}
-        <LeftBottomBox showDetails={!this.props.showLeftTopComponent}>
-          <BorderBox13 className='left-bottom-borderBox13'>
-            <div className='left-bottom'>
-              <ModuleTitle>
-                <i className='iconfont'>&#xe88e;</i>
-                <span>经典案例推送</span>
-              </ModuleTitle>
-              {/* 图表 */}
-              <RecommendList recommendSitua={recommendSitua}></RecommendList>
-            </div>
-          </BorderBox13>
-        </LeftBottomBox>
+        {showDetails ? (
+          <LeftBottom showDetails={!this.props.showLeftTopComponent}>
+            <BorderBox13 className='left-bottom-borderBox13'>
+              <div className='left-bottom'>
+                <ModuleTitle>
+                  <i className='iconfont'>&#xe88e;</i>
+                  <span>{selectedItem.title}</span>
+                </ModuleTitle>
+                {/* 图表 */}
+                <RecommendList recommendSitua={recommendSitua}></RecommendList>
+              </div>
+            </BorderBox13>
+          </LeftBottom>
+        ) : (
+          <LeftBottomBox showDetails={!this.props.showLeftTopComponent}>
+            <BorderBox13 className='left-bottom-borderBox13'>
+              <div className='left-bottom'>
+                <ModuleTitle>
+                  <i className='iconfont'>&#xe88e;</i>
+                  <span>经典案例推送</span>
+                </ModuleTitle>
+                {/* 图表 */}
+                <RecommendList recommendSitua={recommendSitua}></RecommendList>
+              </div>
+            </BorderBox13>
+          </LeftBottomBox>
+        )}
+
 
 
 
@@ -73,7 +89,9 @@ const mapStateToProps = state => {
     recommendSitua: state.leftPage.recommendSitua,
     trafficSitua: state.leftPage.trafficSitua,
     showLeftTopComponent: state.global.showLeftTopComponent,
+    showDetails: state.global.showDetails,
     selectedItem: state.global.selectedItem, // 从全局状态中获取选中的项目数据
+    selectedItemContent: state.global.selectedItemContent, // 从全局状态获取选中项内容
   };
 };
 

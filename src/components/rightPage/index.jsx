@@ -21,10 +21,10 @@ class index extends PureComponent {
     };
   }
   render() {
-    const { offline, browseCategories, userIdentityCategory, showLeftTopComponent } = this.props;
+    const { offline, browseCategories, userIdentityCategory } = this.props;
     return (
       <RightPage>
-        {showLeftTopComponent && (<RightTopBox>
+        <RightTopBox>
           <div className='right-top'>
             <ModuleTitle>
               <i className='iconfont'>&#xe7f7;</i>
@@ -40,20 +40,20 @@ class index extends PureComponent {
               />
             </div>
           </div>
-        </RightTopBox>)}
+        </RightTopBox>
 
 
-        {showLeftTopComponent && (<RightCenterBox>
+        <RightCenterBox>
           <ModuleTitle>
             <i className='iconfont'>&#xe7fd;</i>
             <span>平均用户类别排布</span>
           </ModuleTitle>
           <UserIdentityCategory
             userIdentityCategory={userIdentityCategory}></UserIdentityCategory>
-        </RightCenterBox>)}
+        </RightCenterBox>
 
 
-        {showLeftTopComponent && (<RightBottomBox>
+        <RightBottomBox>
           <BorderBox13 className='right-bottom-borderBox13'>
             <div className='right-bottom'>
               <ModuleTitle>
@@ -85,7 +85,7 @@ class index extends PureComponent {
               </div>
             </div>
           </BorderBox13>
-        </RightBottomBox>)}
+        </RightBottomBox>
 
       </RightPage>
     );

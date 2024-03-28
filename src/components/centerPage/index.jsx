@@ -1,12 +1,15 @@
 import React, { PureComponent } from 'react';
-import { CenterPage, CenterBottom } from './style';
+import { CenterPage, CenterBottom, StyledBorderBox12 } from './style';
 import Map from './charts/Map';
 import { connect } from 'dva';
+import { BorderBox12 } from '@jiaminghi/data-view-react';
 
 class index extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      initshow: props.selectedItemContent
+    };
   }
 
   // 定义点击事件处理函数
@@ -18,14 +21,33 @@ class index extends PureComponent {
     this.props.dispatch({
       type: 'global/TOGGLE_LEFT_TOP_COMPONENT',
       payload: item, // 这里的item是被点击的项目数据
+      initshow: this.state.selectedItemContent,
     });
   };
 
   render() {
-    const { detailsList, mapData } = this.props;
+    const { detailsList, mapData, selectedItemContent } = this.props;
+    let contentToDisplay;
+    if (selectedItemContent) {
+      contentToDisplay = (
+        <BorderBox12>
+          <StyledBorderBox12>
+            <div className='center-bottom' style={{
+              width: '11.725rem',
+              height: '8.025rem',
+            }}
+              dangerouslySetInnerHTML={{ __html: selectedItemContent }} />
+          </StyledBorderBox12>
+        </BorderBox12>
+
+      );
+    } else {
+      // Otherwise, render the Map
+      contentToDisplay = <Map mapData={mapData} />;
+    }
     return (
       <CenterPage>
-        <Map mapData={mapData}></Map>
+        {contentToDisplay}
         <CenterBottom>
           <div className='detail-list'>
             {detailsList
@@ -52,6 +74,7 @@ class index extends PureComponent {
               : ''}
           </div>
         </CenterBottom>
+
       </CenterPage>
     );
   }
@@ -61,6 +84,8 @@ const mapStateToProps = state => {
   return {
     detailsList: state.centerPage.detailsList,
     mapData: state.centerPage.mapData,
+    showLeftTopComponent: state.global.showLeftTopComponent,
+    selectedItemContent: state.global.selectedItemContent, // 从全局状态获取选中项内容
   };
 };
 
